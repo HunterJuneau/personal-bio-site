@@ -1,14 +1,16 @@
-import React from 'react'
-import Bio from '../components/Bio'
-import Technologies from '../components/Technologies'
-import Projects from '../components/Projects'
+import React from 'react';
+import Bio from '../components/Bio';
+import Technologies from '../components/Technologies';
+import Projects from '../components/Projects';
 
-export default function Home() {
+function Home() {
   return (
     <>
-    <Bio />
-    <Technologies />
-    <Projects />
+      <Bio />
+      <Technologies />
+      <Projects />
     </>
-  )
+  );
 }
+
+export default Home;
