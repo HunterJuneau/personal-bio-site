@@ -1,0 +1,20 @@
+{
+  "-MaWE-LqjNMiIU6KMXZ1" : {
+    "firebaseKey" : "-MaWE-LqjNMiIU6KMXZ1",
+    "link" : "https://www.javascript.com/",
+    "logoUrl" : "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+    "name" : "JavaScript"
+  },
+  "-MaWFEguudrj31Js0SNI" : {
+    "firebaseKey" : "-MaWFEguudrj31Js0SNI",
+    "link" : "https://www.w3schools.com/css/css_intro.asp",
+    "logoUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/800px-CSS3_logo_and_wordmark.svg.png",
+    "name" : "CSS"
+  },
+  "-MaWG-CdKkB5hU_njvke" : {
+    "firebaseKey" : "-MaWG-CdKkB5hU_njvke",
+    "link" : "https://www.w3schools.com/html/html_intro.asp#:~:text=HTML%20stands%20for%20Hyper%20Text,how%20to%20display%20the%20content",
+    "logoUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png",
+    "name" : "HTML"
+  }
+}
