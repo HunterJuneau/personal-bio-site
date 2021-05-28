@@ -1,37 +1,47 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody, CardLink, CardTitle
+  Card, CardText, CardBody, CardLink, CardTitle, CardFooter, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { deleteProject } from '../../helpers/data/projectData';
+import FormModal from '../FormModal';
 
-export default function ProjectCard({
-  name,
-  image,
-  description,
-  deployedLink,
-  githubLink,
-}) {
+export default function ProjectCard({ project, admin, setProjects }) {
+  const handleClick = () => {
+    deleteProject(project.firebaseKey).then(setProjects);
+  };
+
   return (
     <div className='w-25 m-2'>
       <Card>
         <CardBody>
-          <CardTitle tag='h5'>{name}</CardTitle>
+          <CardTitle tag='h5'>{project.name}</CardTitle>
         </CardBody>
-        <img width='100%' src={image} alt={name} />
+        <img width='100%' src={project.image} alt={project.name} />
         <CardBody>
-          <CardText>{description}</CardText>
-          <CardLink href={deployedLink}>Visit</CardLink>
-          <CardLink href={githubLink}>Github</CardLink>
+          <CardText>{project.description}</CardText>
+          <CardLink href={project.deployedLink}>Visit</CardLink>
+          <CardLink href={project.githubLink}>Github</CardLink>
         </CardBody>
+        {admin ? (
+          <CardFooter>
+            <FormModal
+              dataSource='Project'
+              setState={setProjects}
+              data={project}
+            />
+            <Button color='danger' onClick={handleClick}>Delete</Button>
+          </CardFooter>
+        ) : (
+          ''
+        )}
       </Card>
     </div>
   );
 }
 
 ProjectCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  deployedLink: PropTypes.string.isRequired,
-  githubLink: PropTypes.string.isRequired,
+  project: PropTypes.object.isRequired,
+  admin: PropTypes.bool.isRequired,
+  setProjects: PropTypes.func.isRequired,
 };

@@ -1,14 +1,12 @@
 import React from 'react';
-import Bio from '../components/sections/Bio';
 import Technologies from '../components/sections/Technologies';
 import Projects from '../components/sections/Projects';
 
-export default function Home() {
+export default function Admin() {
   return (
     <>
-      <Bio />
-      <Technologies admin={false} />
-      <Projects admin={false} />
+      <Technologies admin={true} />
+      <Projects admin={true} />
     </>
   );
 }

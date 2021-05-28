@@ -36,7 +36,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <NavBar admin={admin} user={user} />
-      <Routes />
+      <Routes admin={admin} />
     </BrowserRouter>
   );
 }

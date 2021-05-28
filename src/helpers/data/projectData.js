@@ -10,4 +10,29 @@ const getProjects = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getProjects;
+const updateProject = (projectObj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/projects/${projectObj.firebaseKey}.json`, projectObj)
+    .then(() => getProjects.then(resolve))
+    .catch((error) => reject(error));
+});
+
+const createProject = (projectObj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/projects.json`, projectObj)
+    .then((response) => {
+      updateProject({ firebaseKey: response.data.name }).then(resolve);
+    })
+    .catch((error) => reject(error));
+});
+
+const deleteProject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/projects/${firebaseKey}.json`)
+    .then(() => getProjects().then(resolve))
+    .catch((error) => reject(error));
+});
+
+export {
+  getProjects, updateProject, createProject, deleteProject
+};
