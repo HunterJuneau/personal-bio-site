@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 import FormModal from '../FormModal';
+import { deleteTechnology } from '../../helpers/data/technologyData';
 
 export default function TechnologyCard({ technology, admin, setTechnologies }) {
+  const handleClick = () => {
+    deleteTechnology(technology.firebaseKey).then(setTechnologies);
+  };
+
   return (
     <div className='tech-card'>
       <a href={technology.link}>
@@ -20,6 +26,7 @@ export default function TechnologyCard({ technology, admin, setTechnologies }) {
             setState={setTechnologies}
             data={technology}
           />
+          <Button color='danger' onClick={handleClick}>Delete</Button>
         </div>
       ) : (
         ''

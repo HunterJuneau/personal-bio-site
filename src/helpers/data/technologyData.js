@@ -29,4 +29,13 @@ const createTechnology = (techObj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getTechnologies, updateTechnology, createTechnology };
+const deleteTechnology = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/technologies/${firebaseKey}.json`)
+    .then(() => getTechnologies().then(resolve))
+    .catch((error) => reject(error));
+});
+
+export {
+  getTechnologies, updateTechnology, createTechnology, deleteTechnology
+};
