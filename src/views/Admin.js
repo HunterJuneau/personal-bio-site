@@ -5,8 +5,8 @@ import Projects from '../components/sections/Projects';
 export default function Admin() {
   return (
     <>
-      <Technologies />
-      <Projects />
+      <Technologies admin={true} />
+      <Projects admin={true} />
     </>
   );
 }
