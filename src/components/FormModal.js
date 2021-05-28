@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'reactstrap';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ProjectForm from './forms/ProjectForm';
 import TechnologyForm from './forms/TechnologyForm';
 
-export default function FormModal({ dataSource, setState }) {
+export default function FormModal({ dataSource, setState, data }) {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -12,9 +12,17 @@ export default function FormModal({ dataSource, setState }) {
   const formSetup = () => {
     switch (dataSource) {
       case 'Project':
-        return <ProjectForm setProjects={setState} toggle={toggle} />;
+        return (
+          <ProjectForm setProjects={setState} toggle={toggle} data={data} />
+        );
       case 'Technology':
-        return <TechnologyForm setTechnologies={setState} toggle={toggle} />;
+        return (
+          <TechnologyForm
+            setTechnologies={setState}
+            toggle={toggle}
+            data={data}
+          />
+        );
       default:
         return '';
     }
@@ -23,7 +31,7 @@ export default function FormModal({ dataSource, setState }) {
   return (
     <>
       <Button color='primary' onClick={toggle}>
-        Add {dataSource}
+        {data ? 'Edit' : 'Add'} {dataSource}
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         {formSetup()}
@@ -33,6 +41,7 @@ export default function FormModal({ dataSource, setState }) {
 }
 
 FormModal.propTypes = {
-  dataSource: propTypes.string.isRequired,
-  setState: propTypes.func.isRequired,
+  dataSource: PropTypes.string.isRequired,
+  setState: PropTypes.func.isRequired,
+  data: PropTypes.object,
 };

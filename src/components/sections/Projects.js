@@ -17,7 +17,12 @@ export default function Projects({ admin }) {
       {admin ? <FormModal dataSource='Project' setState={setProjects} /> : ''}
       <div className='projects-container d-flex flex-flow'>
         {projects.map((projectInfo) => (
-          <ProjectCard key={projectInfo.firebaseKey} project={projectInfo} />
+          <ProjectCard
+            key={projectInfo.firebaseKey}
+            project={projectInfo}
+            admin={admin}
+            setProjects={setProjects}
+          />
         ))}
       </div>
     </>

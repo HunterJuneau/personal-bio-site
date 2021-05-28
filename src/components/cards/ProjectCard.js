@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody, CardLink, CardTitle
+  Card, CardText, CardBody, CardLink, CardTitle, CardFooter
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import FormModal from '../FormModal';
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, admin, setProjects }) {
   return (
     <div className='w-25 m-2'>
       <Card>
@@ -17,6 +18,17 @@ export default function ProjectCard({ project }) {
           <CardLink href={project.deployedLink}>Visit</CardLink>
           <CardLink href={project.githubLink}>Github</CardLink>
         </CardBody>
+        {admin ? (
+          <CardFooter>
+            <FormModal
+              dataSource='Project'
+              setState={setProjects}
+              data={project}
+            />
+          </CardFooter>
+        ) : (
+          ''
+        )}
       </Card>
     </div>
   );
@@ -24,4 +36,6 @@ export default function ProjectCard({ project }) {
 
 ProjectCard.propTypes = {
   project: PropTypes.object.isRequired,
+  admin: PropTypes.bool.isRequired,
+  setProjects: PropTypes.func.isRequired,
 };

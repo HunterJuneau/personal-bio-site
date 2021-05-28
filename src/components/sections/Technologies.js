@@ -14,10 +14,19 @@ export default function Technologies({ admin }) {
   return (
     <>
       <h1>Technologies</h1>
-      {admin ? <FormModal dataSource='Technology' setState={setTechnologies} /> : ''}
+      {admin ? (
+        <FormModal dataSource='Technology' setState={setTechnologies} />
+      ) : (
+        ''
+      )}
       <div className='technologies-container d-flex flex-flow justify-content-around m-2'>
         {technologies.map((techInfo) => (
-          <TechnologyCard key={techInfo.firebaseKey} technology={techInfo} />
+          <TechnologyCard
+            key={techInfo.firebaseKey}
+            technology={techInfo}
+            admin={admin}
+            setTechnologies={setTechnologies}
+          />
         ))}
       </div>
     </>
