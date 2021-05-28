@@ -31,7 +31,7 @@ export default function FormModal({ dataSource, setState, data }) {
   return (
     <>
       <Button color='primary' onClick={toggle}>
-        {data ? 'Edit' : 'Add'} {dataSource}
+        {data ? 'Edit' : 'Add'}
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         {formSetup()}

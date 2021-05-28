@@ -10,10 +10,10 @@ import {
 
 export default function TechnologyForm({ setTechnologies, toggle, data }) {
   const [technology, setTechnology] = useState({
-    name: data.name || '',
-    logoUrl: data.logoUrl || '',
-    link: data.link || '',
-    firebaseKey: data.firebaseKey || null,
+    name: data ? data.name : '',
+    logoUrl: data ? data.logoUrl : '',
+    link: data ? data.link : '',
+    firebaseKey: data ? data.firebaseKey : null,
   });
 
   const handleInputChange = (e) => {

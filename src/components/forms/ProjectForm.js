@@ -7,12 +7,12 @@ import { updateProject, createProject } from '../../helpers/data/projectData';
 
 export default function ProjectForm({ setProjects, toggle, data }) {
   const [project, setProject] = useState({
-    name: data.name || '',
-    image: data.image || '',
-    description: data.description || '',
-    deployedLink: data.deployedLink || '',
-    githubLink: data.githubLink || '',
-    firebaseKey: data.firebaseKey || null,
+    name: data ? data.name : '',
+    image: data ? data.image : '',
+    description: data ? data.description : '',
+    deployedLink: data ? data.deployedLink : '',
+    githubLink: data ? data.githubLink : '',
+    firebaseKey: data ? data.firebaseKey : null,
   });
 
   const handleInputChange = (e) => {
