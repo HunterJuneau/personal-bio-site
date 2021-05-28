@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <Bio />
-      <Technologies />
-      <Projects />
+      <Technologies admin={false} />
+      <Projects admin={false} />
     </>
   );
 }

@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function TechnologyCard({ link, logoUrl, name }) {
+export default function TechnologyCard({ technology }) {
   return (
     <div className='tech-card'>
-      <a href={link}>
-        <img src={logoUrl} className='w-100' ></img>
-        <h3>{name}</h3>
+      <a href={technology.link}>
+        <img src={technology.logoUrl} alt={technology.name} className='w-100'></img>
+        <h3>{technology.name}</h3>
       </a>
     </div>
   );
 }
 
 TechnologyCard.propTypes = {
-  link: PropTypes.string.isRequired,
-  logoUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  technology: PropTypes.object.isRequired,
 };

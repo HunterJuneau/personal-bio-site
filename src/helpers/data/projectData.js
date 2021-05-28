@@ -10,4 +10,20 @@ const getProjects = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getProjects;
+const updateProject = (projectObj, firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/projects/${firebaseKey}.json`, projectObj)
+    .then(() => resolve(getProjects()))
+    .catch((error) => reject(error));
+});
+
+const createProject = (projectObj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/projects.json`, projectObj)
+    .then((response) => {
+      resolve(updateProject({ firebaseKey: response.data.name }, response.data.name));
+    })
+    .catch((error) => reject(error));
+});
+
+export { getProjects, updateProject, createProject };

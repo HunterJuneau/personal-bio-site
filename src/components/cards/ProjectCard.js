@@ -4,24 +4,18 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-export default function ProjectCard({
-  name,
-  image,
-  description,
-  deployedLink,
-  githubLink,
-}) {
+export default function ProjectCard({ project }) {
   return (
     <div className='w-25 m-2'>
       <Card>
         <CardBody>
-          <CardTitle tag='h5'>{name}</CardTitle>
+          <CardTitle tag='h5'>{project.name}</CardTitle>
         </CardBody>
-        <img width='100%' src={image} alt={name} />
+        <img width='100%' src={project.image} alt={project.name} />
         <CardBody>
-          <CardText>{description}</CardText>
-          <CardLink href={deployedLink}>Visit</CardLink>
-          <CardLink href={githubLink}>Github</CardLink>
+          <CardText>{project.description}</CardText>
+          <CardLink href={project.deployedLink}>Visit</CardLink>
+          <CardLink href={project.githubLink}>Github</CardLink>
         </CardBody>
       </Card>
     </div>
@@ -29,9 +23,5 @@ export default function ProjectCard({
 }
 
 ProjectCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  deployedLink: PropTypes.string.isRequired,
-  githubLink: PropTypes.string.isRequired,
+  project: PropTypes.object.isRequired,
 };
