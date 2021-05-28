@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import getProjects from '../../helpers/data/projectData';
 import ProjectCard from '../cards/ProjectCard';
 
-export default function Projects({ projects, setProjects }) {
+export default function Projects() {
+  const [projects, setProjects] = useState([]);
+
   useEffect(() => {
     getProjects().then(setProjects);
   }, []);
@@ -26,8 +27,3 @@ export default function Projects({ projects, setProjects }) {
     </>
   );
 }
-
-Projects.propTypes = {
-  projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired,
-};
