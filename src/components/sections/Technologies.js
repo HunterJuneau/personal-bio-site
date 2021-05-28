@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import getTechnologies from '../../helpers/data/technologyData';
 import TechnologyCard from '../cards/TechnologyCard';
 
-export default function Technologies({ technologies, setTechnologies }) {
+export default function Technologies() {
+  const [technologies, setTechnologies] = useState([]);
+
   useEffect(() => {
     getTechnologies().then(setTechnologies);
   }, []);
@@ -24,8 +25,3 @@ export default function Technologies({ technologies, setTechnologies }) {
     </>
   );
 }
-
-Technologies.propTypes = {
-  technologies: PropTypes.array.isRequired,
-  setTechnologies: PropTypes.func.isRequired,
-};
