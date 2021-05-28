@@ -3,14 +3,17 @@ import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { createTechnology } from '../../helpers/data/technologyData';
+import {
+  updateTechnology,
+  createTechnology,
+} from '../../helpers/data/technologyData';
 
-export default function TechnologyForm({ setTechnologies, toggle }) {
+export default function TechnologyForm({ setTechnologies, toggle, data }) {
   const [technology, setTechnology] = useState({
-    name: '',
-    logoUrl: '',
-    link: '',
-    firebaseKey: null,
+    name: data.name || '',
+    logoUrl: data.logoUrl || '',
+    link: data.link || '',
+    firebaseKey: data.firebaseKey || null,
   });
 
   const handleInputChange = (e) => {
@@ -23,9 +26,11 @@ export default function TechnologyForm({ setTechnologies, toggle }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createTechnology(technology).then((response) => {
-      setTechnologies(response);
-    });
+    if (technology.firebaseKey) {
+      updateTechnology(technology).then(setTechnologies);
+    } else {
+      createTechnology(technology).then(setTechnologies);
+    }
 
     setTechnology({
       name: '',
@@ -77,4 +82,5 @@ export default function TechnologyForm({ setTechnologies, toggle }) {
 TechnologyForm.propTypes = {
   setTechnologies: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
+  data: PropTypes.object,
 };

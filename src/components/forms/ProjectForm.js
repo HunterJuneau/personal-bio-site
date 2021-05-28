@@ -3,16 +3,16 @@ import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { createProject } from '../../helpers/data/projectData';
+import { updateProject, createProject } from '../../helpers/data/projectData';
 
-export default function ProjectForm({ setProjects, toggle }) {
+export default function ProjectForm({ setProjects, toggle, data }) {
   const [project, setProject] = useState({
-    name: '',
-    image: '',
-    description: '',
-    deployedLink: '',
-    githubLink: '',
-    firebaseKey: null,
+    name: data.name || '',
+    image: data.image || '',
+    description: data.description || '',
+    deployedLink: data.deployedLink || '',
+    githubLink: data.githubLink || '',
+    firebaseKey: data.firebaseKey || null,
   });
 
   const handleInputChange = (e) => {
@@ -24,10 +24,11 @@ export default function ProjectForm({ setProjects, toggle }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    createProject(project).then((response) => {
-      setProjects(response);
-    });
+    if (project.firebaseKey) {
+      updateProject(project).then(setProjects);
+    } else {
+      createProject(project).then(setProjects);
+    }
 
     setProject({
       name: '',
@@ -101,4 +102,5 @@ export default function ProjectForm({ setProjects, toggle }) {
 ProjectForm.propTypes = {
   setProjects: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
+  data: PropTypes.object,
 };
