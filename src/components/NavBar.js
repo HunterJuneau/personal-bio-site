@@ -8,7 +8,7 @@ import { signOutUser, signInUser } from '../helpers/auth';
 
 export default function NavBar({ admin, user }) {
   return (
-    <Navbar>
+    <Navbar className='mx-5'>
       <Link className='navbar-brand' to='/'>
         Hunter Juneau
       </Link>

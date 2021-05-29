@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'reactstrap';
+import { Button, Modal, ModalBody } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ProjectForm from './forms/ProjectForm';
 import TechnologyForm from './forms/TechnologyForm';
@@ -34,7 +34,9 @@ export default function FormModal({ dataSource, setState, data }) {
         {data ? 'Edit' : 'Add'}
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        {formSetup()}
+        <ModalBody>
+          {formSetup()}
+        </ModalBody>
       </Modal>
     </>
   );

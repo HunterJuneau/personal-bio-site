@@ -10,15 +10,13 @@ export default function TechnologyCard({ technology, admin, setTechnologies }) {
   };
 
   return (
-    <div className='tech-card'>
-      <a href={technology.link}>
+    <div className='tech-card text-center'>
         <img
           src={technology.logoUrl}
           alt={technology.name}
-          className='w-100'
+          className='h-75'
         ></img>
         <h3>{technology.name}</h3>
-      </a>
       {admin ? (
         <div>
           <FormModal

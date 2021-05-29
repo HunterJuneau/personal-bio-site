@@ -12,13 +12,13 @@ export default function ProjectCard({ project, admin, setProjects }) {
   };
 
   return (
-    <div className='w-25 m-2'>
+    <div className='m-2 project-card'>
       <Card>
         <CardBody>
-          <CardTitle tag='h5'>{project.name}</CardTitle>
+          <CardTitle tag='h5' className='text-center'>{project.name}</CardTitle>
         </CardBody>
         <img width='100%' src={project.image} alt={project.name} />
-        <CardBody>
+        <CardBody className='text-center'>
           <CardText>{project.description}</CardText>
           <CardLink href={project.deployedLink}>Visit</CardLink>
           <CardLink href={project.githubLink}>Github</CardLink>
