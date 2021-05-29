@@ -12,10 +12,10 @@ export default function Projects({ admin }) {
   }, []);
 
   return (
-    <>
-      <h1>Projects</h1>
+    <div className='my-5'>
+      <h1 className='text-center'>Projects</h1>
       {admin ? <FormModal dataSource='Project' setState={setProjects} /> : ''}
-      <div className='projects-container d-flex flex-flow'>
+      <div className='projects-container d-flex flex-flow justify-content-center'>
         {projects.map((projectInfo) => (
           <ProjectCard
             key={projectInfo.firebaseKey}
@@ -25,7 +25,7 @@ export default function Projects({ admin }) {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

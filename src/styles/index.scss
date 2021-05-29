@@ -2,5 +2,32 @@
 @import 'variables';
 
 body {
-  background-color: $favColor;
+  background-color: white;
+}
+
+#root {
+  padding: 0px;
+}
+
+#myImg {
+  border-color: #005288;
+}
+
+#bioContainer {
+  background-color: #005288;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: white;
+}
+
+#bio {
+  max-width: 750px;
+}
+
+.tech-card {
+  height: 100px;
+}
+
+.project-card {
+  width: 300px;
 }
