@@ -12,14 +12,14 @@ export default function Technologies({ admin }) {
   }, []);
 
   return (
-    <>
-      <h1>Technologies</h1>
+    <div className='my-5'>
+      <h1 className='text-center'>Technologies</h1>
       {admin ? (
         <FormModal dataSource='Technology' setState={setTechnologies} />
       ) : (
         ''
       )}
-      <div className='technologies-container d-flex flex-flow justify-content-around m-2'>
+      <div className='technologies-container d-flex flex-flow justify-content-center m-5'>
         {technologies.map((techInfo) => (
           <TechnologyCard
             key={techInfo.firebaseKey}
@@ -29,7 +29,7 @@ export default function Technologies({ admin }) {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
